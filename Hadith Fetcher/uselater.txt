@@ -1,0 +1,20 @@
+
+  // fetch the hadith staring Number
+  b = responseEng.metadata.section_details[hadithTopicNumber];
+  let count = 1;
+  for (const key in b) {
+    if (Object.hasOwnProperty.call(b, key)) {
+      const element = b[key];
+      if (count == 1) {
+        hadithNumberBegin = element;
+        // console.log(hadithNumberBegin);
+      } else if (count == 2) {
+        hadithNumberEnd = element;
+        // console.log(hadithNumberEnd);
+      }
+      count++;
+    }
+  }
+  console.log(responseEng.hadiths[hadithNumberBegin].text);
+  console.log(responseUrdu.hadiths[hadithNumberBegin].text);
+  console.log(responseArabic.hadiths[hadithNumberBegin].text);

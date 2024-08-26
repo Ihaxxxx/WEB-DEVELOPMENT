@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hadith Fetcher</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="main">
+        <div class="left">
+            <!-- <input type="text" placeholder="Which collection Of Hadith u want to see"> -->
+            <div class="dropDownList">
+                <label for="Author">Choose A Book </label>
+                <select name="Author" id="Author">
+                    <option value="abudawud">abudawud</option>
+                    <option value="bukhari">bukhari</option>
+                    <option value="ibnmajah">ibnmajah</option>
+                    <option value="malik">malik</option>
+                    <option value="muslim">muslim</option>
+                    <option value="nasai">nasai</option>
+                    <option value="tirmidhi">tirmidhi</option>
+                </select>
+                <input id="searchBtnAuthor" type="button" value="Search">
+            </div>
+
+            <div id="topicInputBox" class="topicInputBox" style="display: none;">
+                <div class="InputBox"><input id="topicNoInput" class="topicInput" onkeyup="myFunction()" type="text"
+                    placeholder="enter the Topic Number of the Hadith">
+                </div>
+                <h1>Recent Searches</h1>
+                <div id="recentSearches">
+                </div>
+                <div id="topicsTable">
+                    <!-- <ul id="topics" class="topicsList"></ul> -->
+                </div>
+            </div>
+
+        </div>
+
+        <div class="right">
+            <div class="DataBox">
+                <div id="Arabic"></div>
+                <div id="English"></div>
+                <div id="Urdu"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="check.js"></script>
+    <!-- <script src="index.js"></script> -->
+    <!-- <script src="another.js"></script> -->
+    <script>
+        function myFunction() {
+            input = document.getElementById('topicNoInput');
+            filter = input.value.toUpperCase();
+            ul = document.getElementById("topics");
+            li = ul.getElementsByTagName('li');
+            // console.log(li)
+            for (i = 0; i < li.length; i++) {
+                a = li[i].getElementsByTagName("a")[0];
+                txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                  li[i].style.display = "";
+                } else {
+                  li[i].style.display = "none";
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>
